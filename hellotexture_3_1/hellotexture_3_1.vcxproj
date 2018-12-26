@@ -21,7 +21,7 @@
   <PropertyGroup Label="Globals">
     <ProjectGuid>{7CBED517-3683-4F6D-9596-771F7D802AB2}</ProjectGuid>
     <Keyword>Win32Proj</Keyword>
-    <RootNamespace>HiOpengl</RootNamespace>
+    <RootNamespace>hellotexture_3_1</RootNamespace>
     <WindowsTargetPlatformVersion>8.1</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />

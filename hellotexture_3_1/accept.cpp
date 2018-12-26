@@ -59,8 +59,8 @@ int main()
 	// ------------------------------------
 	// vertex shader program
 	MyShader shaderOrange = MyShader(
-		"E:\\VS Projects\\learnopengl_helloshader_2_1\\shaders\\texture_triangle_vertex.vs",
-		"E:\\VS Projects\\learnopengl_helloshader_2_1\\shaders\\texture_triangle_fragment.fs"
+		"..\\shaders\\texture_triangle_vertex.vs",
+		"..\\shaders\\texture_triangle_fragment.fs"
 	);
 
 	// generate textures
