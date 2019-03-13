@@ -156,6 +156,7 @@
     <ClCompile Include="glad.c" />
     <ClCompile Include="my_shader.cpp" />
     <ClCompile Include="stb_image_implements.cpp" />
+    <ClCompile Include="utils.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="my_shader.h" />

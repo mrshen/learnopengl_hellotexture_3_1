@@ -28,6 +28,8 @@ unsigned int indices[] = { // 注意索引从0开始!
 void framebuffer_cb(GLFWwindow*, int, int);
 void input_process(GLFWwindow*);
 
+extern GLuint loadTexture(const char *texturePath, int slot, int innerFormat, unsigned int format, bool needFlip);
+
 int main()
 {
 	glfwInit();
@@ -65,48 +67,8 @@ int main()
 
 	// generate textures
 	GLuint textures[2];
-	glGenTextures(2, textures);
-
-
-	glBindTexture(GL_TEXTURE_2D, textures[0]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-	int width, height, nrChannels;
-	unsigned char* imageData1 = stbi_load("container.jpg", &width, &height, &nrChannels, 0);
-	if (imageData1)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGB, width, height, 0, GL_RGB, GL_UNSIGNED_BYTE, imageData1);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		cout << "Error: FAILED TO LOAD TEXTURE \"container.jpg\"." << endl;
-	}
-	stbi_image_free(imageData1);
-
-
-	glBindTexture(GL_TEXTURE_2D, textures[1]);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-	stbi_set_flip_vertically_on_load(true);
-
-	unsigned char* imageData2 = stbi_load("awesomeface.png", &width, &height, &nrChannels, 0);
-	if (imageData2)
-	{
-		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, imageData2);
-		glGenerateMipmap(GL_TEXTURE_2D);
-	}
-	else
-	{
-		cout << "Error: FAILED TO LOAD TEXTURE awesomeface.png." << endl;
-	}
-	stbi_image_free(imageData2);
+	textures[0] = loadTexture("container.jpg", 0, GL_RGB, GL_RGB, false);
+	textures[1] = loadTexture("awesomeface.png", 1, GL_RGBA, GL_RGBA, true);
 	
 	GLuint VAO;
 	glGenVertexArrays(1, &VAO);
